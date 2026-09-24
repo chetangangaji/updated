@@ -1,0 +1,6 @@
+[theme]
+primaryColor = "#00A86B"              # Emerald Green accent for buttons/sliders
+backgroundColor = "#F0F9FF"           # Pale Ice Blue main background
+secondaryBackgroundColor = "#E6F4EA"  # Soft Sage Green for cards/inputs
+textColor = "#102A43"                 # Deep Navy for readable text
+font = "sans serif"
