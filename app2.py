@@ -555,7 +555,7 @@ with st.expander(
     cm = info["confusion_matrix"]
 
     fig_cm, ax_cm = plt.subplots(
-        figsize=(3, 3)
+        figsize=(2, 2)
     )
 
     ax_cm.imshow(
