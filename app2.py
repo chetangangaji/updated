@@ -557,7 +557,7 @@ with st.expander(
     cm = info["confusion_matrix"]
 
     # Create confusion matrix plot
-    fig_cm, ax_cm = plt.subplots(figsize=(3, 2))
+    fig_cm, ax_cm = plt.subplots(figsize=(2, 1))
 
     # Display matrix
     ax_cm.imshow(cm)
@@ -565,18 +565,18 @@ with st.expander(
     # Title
     ax_cm.set_title(
         "Confusion Matrix",
-        fontsize=9
+        fontsize=7
     )
 
     # Axis labels
     ax_cm.set_xlabel(
         "Predicted Label",
-        fontsize=6
+        fontsize=5
     )
 
     ax_cm.set_ylabel(
         "Actual Label",
-        fontsize=6
+        fontsize=5
     )
 
     # Set tick positions
@@ -586,12 +586,12 @@ with st.expander(
     # Set tick labels
     ax_cm.set_xticklabels(
         ["Absent", "Present"],
-        fontsize=7
+        fontsize=5
     )
 
     ax_cm.set_yticklabels(
         ["Absent", "Present"],
-        fontsize=7
+        fontsize=5
     )
 
     # Display numbers inside the matrix
