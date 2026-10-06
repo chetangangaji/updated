@@ -650,9 +650,8 @@ feature_df = info[
         "feature_importance"
 ].copy()
 
-
 # Create graph
-    fig, ax = plt.subplots(
+fig, ax = plt.subplots(
         figsize=(9, 6)
 )
 
