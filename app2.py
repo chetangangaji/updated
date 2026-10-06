@@ -632,81 +632,81 @@ st.dataframe(
     use_container_width=True
 )
 
-    # ========================================================
-    # FEATURE IMPORTANCE
-    # ========================================================
+# ========================================================
+# FEATURE IMPORTANCE
+# ========================================================
 
-    st.markdown(
+st.markdown(
         "#### 🌳 Random Forest Feature Importance"
-    )
+)
 
-    st.write(
+st.write(
         "This graph shows how important each student-related "
         "feature is for predicting attendance."
-    )
+)
 
 
-    feature_df = info[
+feature_df = info[
         "feature_importance"
-    ].copy()
+].copy()
 
 
-    # Create graph
+# Create graph
     fig, ax = plt.subplots(
         figsize=(9, 6)
-    )
+)
 
 
-    ax.barh(
+ax.barh(
         feature_df["Feature"][::-1],
         feature_df["Importance"][::-1]
-    )
+)
 
 
-    ax.set_xlabel(
+ax.set_xlabel(
         "Feature Importance"
-    )
+)
 
 
-    ax.set_ylabel(
+ax.set_ylabel(
         "Feature"
     )
 
 
-    ax.set_title(
+ax.set_title(
         "Random Forest Feature Importance"
-    )
+)
 
 
-    plt.tight_layout()
+plt.tight_layout()
 
 
-    # Display graph in Streamlit
-    st.pyplot(
+# Display graph in Streamlit
+st.pyplot(
         fig
-    )
+)
 
 
-    # ========================================================
-    # FEATURE IMPORTANCE TABLE
-    # ========================================================
+# ========================================================
+# FEATURE IMPORTANCE TABLE
+# ========================================================
 
-    st.markdown(
+st.markdown(
         "#### Feature Importance Values"
-    )
+)
 
 
-    display_df = feature_df.copy()
+display_df = feature_df.copy()
 
 
-    display_df["Importance"] = (
-        display_df["Importance"]
+display_df["Importance"] = (
+    display_df["Importance"]
         .round(4)
-    )
+)
 
 
-    st.dataframe(
+st.dataframe(
         display_df,
         use_container_width=True,
         hide_index=True
-    )
+)
