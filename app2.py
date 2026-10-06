@@ -363,7 +363,7 @@ with col2:
     study_hours = st.slider(
         "Study Hours / Day",
         0.0,
-        12.0,
+        10.0,
         4.0,
         0.1
     )
@@ -371,14 +371,14 @@ with col2:
     sleep_hours = st.slider(
         "Sleep Hours / Day",
         3.0,
-        12.0,
+        10.0,
         7.0,
         0.1
     )
 
     travel_time_minutes = st.number_input(
         "Travel Time (minutes)",
-        min_value=0,
+        min_value=5,
         max_value=180,
         value=30
     )
@@ -514,7 +514,6 @@ with st.expander(
         "#### Hyperparameters & Configuration"
     )
 
-
     st.write(
         "- **Estimators:** 100 Trees\n"
         "- **Max Depth:** 10\n"
@@ -544,168 +543,81 @@ with st.expander(
     )
 
 
-# ========================================================
-# CONFUSION MATRIX
-# ========================================================
+    # ========================================================
+    # FEATURE IMPORTANCE
+    # ========================================================
 
-st.markdown(
-    "#### Confusion Matrix"
-)
-
-cm = info["confusion_matrix"]
-
-fig_cm, ax_cm = plt.subplots(
-    figsize=(2, 2)
-)
-
-ax_cm.imshow(
-    cm,
-    interpolation="nearest",
-    cmap=plt.cm.Blues
-)
-
-ax_cm.set_title(
-    "Confusion Matrix",
-    fontsize=8
-)
-
-ax_cm.set_xlabel(
-    "Predicted Label",
-    fontsize=7
-)
-
-ax_cm.set_ylabel(
-    "Actual Label",
-    fontsize=7
-)
-
-ax_cm.set_xticks(
-    [0, 1]
-)
-
-ax_cm.set_yticks(
-    [0, 1]
-)
-
-ax_cm.set_xticklabels(
-    ["Absent", "Present"],
-    fontsize=6
-)
-
-ax_cm.set_yticklabels(
-    ["Absent", "Present"],
-    fontsize=6
-)
-
-# Display values inside matrix
-for i in range(cm.shape[0]):
-    for j in range(cm.shape[1]):
-
-        ax_cm.text(
-            j,
-            i,
-            cm[i, j],
-            ha="center",
-            va="center",
-            fontsize=7
-        )
-
-plt.tight_layout()
-
-st.pyplot(
-    fig_cm
-)
-
-# Confusion matrix table
-st.markdown(
-    "#### Confusion Matrix Values"
-)
-
-cm_df = pd.DataFrame(
-    cm,
-    index=["Actual Absent", "Actual Present"],
-    columns=["Predicted Absent", "Predicted Present"]
-)
-
-st.dataframe(
-    cm_df,
-    use_container_width=True
-)
-
-# ========================================================
-# FEATURE IMPORTANCE
-# ========================================================
-
-st.markdown(
+    st.markdown(
         "#### 🌳 Random Forest Feature Importance"
-)
+    )
 
-st.write(
+    st.write(
         "This graph shows how important each student-related "
         "feature is for predicting attendance."
-)
+    )
 
 
-feature_df = info[
+    feature_df = info[
         "feature_importance"
-].copy()
+    ].copy()
 
-# Create graph
-fig, ax = plt.subplots(
+
+    # Create graph
+    fig, ax = plt.subplots(
         figsize=(9, 6)
-)
+    )
 
 
-ax.barh(
+    ax.barh(
         feature_df["Feature"][::-1],
         feature_df["Importance"][::-1]
-)
+    )
 
 
-ax.set_xlabel(
+    ax.set_xlabel(
         "Feature Importance"
-)
+    )
 
 
-ax.set_ylabel(
+    ax.set_ylabel(
         "Feature"
     )
 
 
-ax.set_title(
+    ax.set_title(
         "Random Forest Feature Importance"
-)
+    )
 
 
-plt.tight_layout()
+    plt.tight_layout()
 
 
-# Display graph in Streamlit
-st.pyplot(
+    # Display graph in Streamlit
+    st.pyplot(
         fig
-)
+    )
 
 
-# ========================================================
-# FEATURE IMPORTANCE TABLE
-# ========================================================
+    # ========================================================
+    # FEATURE IMPORTANCE TABLE
+    # ========================================================
 
-st.markdown(
+    st.markdown(
         "#### Feature Importance Values"
-)
+    )
 
 
-display_df = feature_df.copy()
+    display_df = feature_df.copy()
 
 
-display_df["Importance"] = (
-    display_df["Importance"]
+    display_df["Importance"] = (
+        display_df["Importance"]
         .round(4)
-)
+    )
 
 
-st.dataframe(
+    st.dataframe(
         display_df,
         use_container_width=True,
         hide_index=True
-)
+    )
