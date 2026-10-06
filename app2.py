@@ -540,7 +540,51 @@ with st.expander(
     st.dataframe(
         df_report,
         use_container_width=True
-    )
+    )# ========================================================
+# CONFUSION MATRIX
+# ========================================================
+
+st.markdown("#### 🔲 Confusion Matrix")
+
+st.write(
+    "The confusion matrix shows how correctly the model "
+    "predicted Present and Absent students."
+)
+
+cm = info["confusion_matrix"]
+
+# Create confusion matrix plot
+fig_cm, ax_cm = plt.subplots(figsize=(6, 5))
+
+ax_cm.imshow(cm)
+
+ax_cm.set_title("Confusion Matrix")
+ax_cm.set_xlabel("Predicted Label")
+ax_cm.set_ylabel("Actual Label")
+
+# Set labels
+ax_cm.set_xticks([0, 1])
+ax_cm.set_yticks([0, 1])
+ax_cm.set_xticklabels(["Absent", "Present"])
+ax_cm.set_yticklabels(["Absent", "Present"])
+
+# Display numbers inside the matrix
+for i in range(2):
+    for j in range(2):
+        ax_cm.text(
+            j,
+            i,
+            cm[i, j],
+            ha="center",
+            va="center",
+            fontsize=14
+        )
+
+plt.tight_layout()
+
+# Display in Streamlit
+st.pyplot(fig_cm)
+    
 
 
     # ========================================================
