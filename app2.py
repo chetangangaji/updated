@@ -604,7 +604,7 @@ with st.expander(
                 cm[i, j],
                 ha="center",
                 va="center",
-                fontsize=9
+                fontsize=7
             )
 
     # Adjust spacing
@@ -612,6 +612,7 @@ with st.expander(
 
     # Display graph in Streamlit
     st.pyplot(fig_cm)
+
     # ========================================================
     # FEATURE IMPORTANCE
     # ========================================================
