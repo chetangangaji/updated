@@ -553,42 +553,65 @@ with st.expander(
         "predicted Present and Absent students."
     )
 
+    # Get confusion matrix
     cm = info["confusion_matrix"]
 
     # Create confusion matrix plot
     fig_cm, ax_cm = plt.subplots(figsize=(3, 2))
 
+    # Display matrix
     ax_cm.imshow(cm)
 
-    ax_cm.set_title("Confusion Matrix")
-    ax_cm.set_xlabel("Predicted Label")
-    ax_cm.set_ylabel("Actual Label")
+    # Title
+    ax_cm.set_title(
+        "Confusion Matrix",
+        fontsize=9
+    )
 
-    # Set labels
+    # Axis labels
+    ax_cm.set_xlabel(
+        "Predicted Label",
+        fontsize=8
+    )
+
+    ax_cm.set_ylabel(
+        "Actual Label",
+        fontsize=8
+    )
+
+    # Set tick positions
     ax_cm.set_xticks([0, 1])
     ax_cm.set_yticks([0, 1])
-    ax_cm.set_xticklabels(["Absent", "Present"])
-    ax_cm.set_yticklabels(["Absent", "Present"])
+
+    # Set tick labels
+    ax_cm.set_xticklabels(
+        ["Absent", "Present"],
+        fontsize=7
+    )
+
+    ax_cm.set_yticklabels(
+        ["Absent", "Present"],
+        fontsize=7
+    )
 
     # Display numbers inside the matrix
     for i in range(2):
         for j in range(2):
+
             ax_cm.text(
                 j,
                 i,
                 cm[i, j],
                 ha="center",
                 va="center",
-                fontsize=14
+                fontsize=9
             )
 
+    # Adjust spacing
     plt.tight_layout()
 
-    # Display in Streamlit
+    # Display graph in Streamlit
     st.pyplot(fig_cm)
-    
-
-
     # ========================================================
     # FEATURE IMPORTANCE
     # ========================================================
