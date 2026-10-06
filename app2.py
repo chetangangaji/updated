@@ -571,12 +571,12 @@ with st.expander(
     # Axis labels
     ax_cm.set_xlabel(
         "Predicted Label",
-        fontsize=8
+        fontsize=6
     )
 
     ax_cm.set_ylabel(
         "Actual Label",
-        fontsize=8
+        fontsize=6
     )
 
     # Set tick positions
