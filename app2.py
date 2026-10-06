@@ -557,7 +557,7 @@ with st.expander(
     cm = info["confusion_matrix"]
 
     # Create confusion matrix plot
-    fig_cm, ax_cm = plt.subplots(figsize=(3, 2))
+    fig_cm, ax_cm = plt.subplots(figsize=(2.7, 1.7))
 
     # Display matrix
     ax_cm.imshow(cm)
